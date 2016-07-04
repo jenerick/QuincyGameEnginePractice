@@ -23,8 +23,9 @@ namespace QuincyGameEnginePractice
 			QDictionary.Add("MainMenu", new PhizzleLevelOne());
 			QDictionary.Add("Options", new Options());
 			QDictionary.Add("Test", new BallPitLevel());
-			//QDictionary.Add("Snake", new SnakeScene());
-			ChangeScene("MainMenu");
+			//QDictionary.Add("Snake", new SnakeScene());\
+			QDictionary.Add("Space", new SpaceScene());
+			ChangeScene("Space");
 		}
 
 		/// <summary>
@@ -72,7 +73,7 @@ namespace QuincyGameEnginePractice
 			}
 			catch(Exception e)
 			{
-				Console.WriteLine($"Crash here? {e}");
+				Console.WriteLine($"Crash at ChangeScene? {e}");
 			}
 		}
 
@@ -82,9 +83,16 @@ namespace QuincyGameEnginePractice
 		/// <returns>The scene.</returns>
 		public static void ResetScene()
 		{
-			UnloadContent();
-			LoadContent();
-			Start();
+			try
+			{
+				UnloadContent();
+				LoadContent();
+				Start();
+			}
+			catch(Exception e)
+			{
+				Console.WriteLine($"Crash at ResetScene? {e}");
+			}
 		}
 
 		/// <summary>
